@@ -1,0 +1,41 @@
+{% extends "MokaApp/padre.html" %}
+{% load static %}
+{% block contenido_variable %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Reserva</title>
+</head>
+<body>
+
+    {% for p in reservas %}
+
+        <p><em> Numero de la Reserva:</em> {{p.numero_reserva}}</p>
+        <p><em> Nombre de la Reserva:</em> {{p.nombre_reserva}}</p>
+        <p><em> Fecha de la Reserva:</em> {{p.fecha_reserva}}</p>
+        <p><em> Confirmacion:</em> {{p.confirmacion}}</p>
+
+        <button>
+            <a href="{% url 'EliminarReserva' p.nombre_reserva %}"> Eliminar</a>
+        </button>
+        <button>
+            <a href="{% url 'EditarReserva' p.nombre_reserva %}"> Editar</a>
+        </button>
+
+
+    {% endfor %}
+
+    <br>
+    <br>
+    <button>
+    <a href="reservas">Agregar otra Reserva</a>
+    </button>
+
+    
+</body>
+
+</html>
+{% endblock %}

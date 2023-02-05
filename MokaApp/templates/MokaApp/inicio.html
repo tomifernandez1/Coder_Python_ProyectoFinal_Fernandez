@@ -1,0 +1,33 @@
+{% extends "MokaApp/padre.html" %}
+{% load static %}
+{% block contenido_variable %}
+<h1>Inicio</h1>
+  
+
+    <h3>Podes buscar una reserva:</h3>
+
+    <form action="/MokaApp/buscar/" method="GET">
+
+        <input type="number" name="numero_reserva" id="numero_reserva">
+
+        <input type="submit" value="Buscar">
+
+    </form>
+
+    {% if reservas %}
+
+    <p>Estamos buscando el numero de reserva: <strong>{{numero_reserva}}</strong></p>
+
+    <ul>
+	{% for reserva in reservas %}
+    <li><label for="fname">Numero de la Reserva: </label> <strong>{{reserva.numero_reserva}}</strong></li>
+	<li><label for="fname">Nombre de la Reserva: </label> <strong>{{reserva.nombre_reserva}}</strong></li>
+    <li><label for="fname">Fecha de la Reserva: </label>  <strong>{{reserva.fecha_reserva}}</strong></li>
+	{% endfor %}
+    </ul>
+    {% elif reserva not in reservas %}
+    <p><strong> No existen datos con esa descripcion.</strong> </p>
+    {% endif %}
+    <p style= "color: red;"> {{respuesta}}</p>
+
+ {% endblock %}

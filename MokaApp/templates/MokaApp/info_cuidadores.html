@@ -1,0 +1,43 @@
+{% extends "MokaApp/padre.html" %}
+{% load static %}
+{% block contenido_variable %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Cuidadores</title>
+</head>
+
+<body>
+
+    {% for p in cuidadores %}
+
+            <p><em> Nombre:</em> {{p.nombre}}</p>
+            <p><em> Apellido:</em> {{p.apellido}}</p>
+            <p><em> Email:</em> {{p.email}}</p>
+            <p><em> Zona:</em>{{p.zona}}</p>
+    
+ 
+        <button>
+            <a href="{% url 'EliminarCuidador' p.nombre %}"> Eliminar</a>
+        </button>
+        <button>
+            <a href="{% url 'EditarCuidador' p.nombre %}"> Editar</a>
+        </button>
+
+
+    {% endfor %}    
+
+    <br>
+    <br>
+    <button>
+    <a href="cuidadores">Agregar otro Cuidador</a>
+    </button>
+
+    
+</body>
+
+</html>
+{% endblock %}

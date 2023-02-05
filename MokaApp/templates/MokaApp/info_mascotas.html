@@ -1,0 +1,40 @@
+{% extends "MokaApp/padre.html" %}
+{% load static %}
+{% block contenido_variable %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Mascota</title>
+</head>
+
+<body>
+
+    {% for p in mascotas %}
+            <p><em> Nombre Mascota:</em> {{p.nombre_mascota}}</p>
+            <p><em> Codigo Mascota:</em> {{p.codigo_mascota}}</p>
+            <p><em> Email Dueño:</em> {{p.email_dueño}}</p>
+            <p><em> Zona:</em>{{p.zona}}</p>
+        <button>
+            <a href="{% url 'EliminarMascota' p.nombre_mascota %}"> Eliminar</a>
+        </button>
+        <button>
+            <a href="{% url 'EditarMascota' p.nombre_mascota %}"> Editar</a>
+        </button>
+
+
+    {% endfor %}
+
+    <br>
+    <br>
+    <button>
+    <a href="mascotas">Agregar otra Mascota</a>
+    </button>
+
+    
+</body>
+
+</html>
+{% endblock %}

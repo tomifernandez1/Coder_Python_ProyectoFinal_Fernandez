@@ -1,0 +1,28 @@
+{% extends "MokaApp/padre.html" %}
+{% load static %}
+{% block contenido_variable %}
+
+
+    
+    <h1>Editar Perfil</h1>
+    <h1>De {{usuario}}</h1>
+    
+
+    <form action="" method="POST">{% csrf_token %}
+
+    
+        <table>
+
+            {{ formulario.as_table }}
+
+
+        </table>
+
+
+        <input type="submit", value="Enviar">
+
+    </form>
+
+  
+
+{% endblock %}
